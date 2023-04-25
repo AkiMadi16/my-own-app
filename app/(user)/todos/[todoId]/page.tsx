@@ -1,6 +1,6 @@
 import React from "react";
 // import TodosList from "./TodosList";
-import { Todo } from "../../../src/app/styles/typings";
+import { Todo } from "../../../../src/app/styles/typings";
 import { notFound } from "next/navigation";
 
 export const dynamicParams = true;

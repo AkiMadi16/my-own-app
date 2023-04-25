@@ -1,8 +1,11 @@
+import React, { Suspense } from "react";
 // import Image from "next/image";
 // import { Inter } from "next/font/google";
 import "../src/app/styles/globals.css";
 // import styles from "./page.module.css";
 import Link from "next/link";
+import TodosList from "./(user)/todos/TodosList";
+import Search from "./(user)/search/Search";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -10,9 +13,37 @@ export default function Home() {
   return (
     <main>
       {/* // <main className={styles.main}> */}
-      <h1 className="text-3xl font-bold underline text-red-500">
-        Hello World! I'm Madhavi.
-      </h1>
+      <div className="flex flex-col space-y-10">
+        <Suspense
+          fallback={<p className="text-green-500">Loading the Todos...</p>}
+        >
+          <h1 className="text-3xl font-bold underline text-red-500">
+            Loading Todos
+          </h1>
+          <div className="flex space-x-2">
+            {/* @ts-ignore */}
+            <TodosList />
+          </div>
+        </Suspense>
+
+        <Suspense
+          fallback={
+            <p className="text-yellow-400">Loading the Shopping Trolley...</p>
+          }
+        >
+          <h1>Loading shopping Trolley</h1>
+
+          <div className="flex space-x-2">
+            {/* @ts-ignore */}
+            <TodosList />
+          </div>
+        </Suspense>
+      </div>
+
+      <div className=" flex pt-10 space-y-5">
+        <Search />
+      </div>
+
       <Link href="/pages/about.tsx">Pages</Link>
       {/* 
       <div className={styles.description}>
